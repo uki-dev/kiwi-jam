@@ -2,15 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
+  public Character character;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+  public void Update()
+  {
+    if (character)
+    {
+      Vector2Int direction = Vector2Int.zero;
+
+      if (Input.GetKey(KeyCode.W))
+        direction.y += 1;
+      if (Input.GetKey(KeyCode.A))
+        direction.x -= 1;
+      if (Input.GetKey(KeyCode.S))
+        direction.y -= 1;
+      if (Input.GetKey(KeyCode.D))
+        direction.x += 1;
+
+      // stop diagonal movement
+      if (Mathf.Abs(direction.x) != Mathf.Abs(direction.y))
+        character.Move(direction);
+    }
+  }
 }
