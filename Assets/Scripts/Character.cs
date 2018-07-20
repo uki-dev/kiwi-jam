@@ -12,18 +12,33 @@ public class Character : MonoBehaviour
 
   bool moving;
   int steps;
+  float nextMove;
+
   float delta;
 
   public void Move(Vector2Int direction)
   {
-    if (!moving && steps < maximumSteps)
+    if (Time.time >= nextMove && steps < maximumSteps)
     {
-      // Check if there is room to move
-      if (!Physics2D.Raycast(transform.position, direction, 0.5f))
+      bool canMove = true;
+      RaycastHit2D[] raycastHits = Physics2D.RaycastAll(transform.position, direction, 0.5f);
+      foreach (RaycastHit2D raycastHit in raycastHits)
+      {
+        if (raycastHit.collider.gameObject != gameObject)
+        {
+          canMove = false;
+          Box box = raycastHit.collider.GetComponent<Box>();
+          if (box && box.Move(direction))
+          {
+            canMove = true;
+          }
+        }
+      }
+      if (canMove)
       {
         this.direction = direction;
-        StartCoroutine(IMove(direction));
-        steps++;
+        transform.position += (Vector3)(Vector2)direction;
+        nextMove = Time.time + 1f / movementSpeed;
       }
     }
   }
