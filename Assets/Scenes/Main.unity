@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa3c16bd5e302a4e832405aecde1b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSteps: 10
+  maximumSteps: 32
   movementSpeed: 4
 --- !u!23 &1249546859
 MeshRenderer:

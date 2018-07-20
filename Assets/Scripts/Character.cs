@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
   {
     if (!moving && steps < maximumSteps)
     {
-      if (!Physics2D.Raycast(transform.position, direction, 1f))
+      if (!Physics2D.Raycast(transform.position, direction, 0.5f))
         StartCoroutine(IMove(direction));
 
       steps++;
