@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-  public float speed;
+  public int maximumSteps;
+  public float movementSpeed;
 
   bool moving;
+  int steps;
   float delta;
 
   public void Move(Vector2Int direction)
   {
-    if (!moving)
-      StartCoroutine(IMove(direction));
+    if (!moving && steps < maximumSteps)
+    {
+      if (!Physics2D.Raycast(transform.position, direction, 1f))
+        StartCoroutine(IMove(direction));
+
+      steps++;
+    }
   }
 
-  private IEnumerator IMove(Vector2Int direction)
+  IEnumerator IMove(Vector2Int direction)
   {
     float time = delta;
     Vector2 startPosition = transform.position;
@@ -25,7 +32,7 @@ public class Character : MonoBehaviour
     while (time < 1f)
     {
       transform.position = Vector2.Lerp(startPosition, endPosition, time);
-      time += Time.deltaTime * speed;
+      time += Time.deltaTime * movementSpeed;
       yield return null;
     }
     transform.position = endPosition;

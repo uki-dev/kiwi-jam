@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 1249546861}
   - component: {fileID: 1249546860}
   - component: {fileID: 1249546859}
-  - component: {fileID: 1249546858}
   - component: {fileID: 1249546857}
   m_Layer: 0
   m_Name: Character
@@ -221,20 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
---- !u!64 &1249546858
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1249546856}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1249546859
 MeshRenderer:
   m_ObjectHideFlags: 0
