@@ -9,7 +9,7 @@ public class StrongGuy : Character
     if (canMove)
     {
       bool blocked = false;
-      RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, 1 << LayerMask.NameToLayer("Box"));
+      RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, stepLength * 0.5f, 1 << LayerMask.NameToLayer("Box"));
       if (raycastHit)
       {
         Box box = raycastHit.collider.GetComponent<Box>();

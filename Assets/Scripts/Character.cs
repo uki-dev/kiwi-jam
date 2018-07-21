@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
 {
   public new string name;
   public int maximumSteps;
+  public int stepLength;
   public float movementSpeed;
   public LayerMask collisionMask;
 
@@ -22,7 +23,7 @@ public class Character : MonoBehaviour
   {
     get
     {
-      return Time.time >= nextMove && (steps == 0 || steps < maximumSteps);
+      return Time.time >= nextMove && (maximumSteps == 0 || steps < maximumSteps);
     }
   }
 
@@ -37,7 +38,7 @@ public class Character : MonoBehaviour
     if (canMove)
     {
       bool blocked = false;
-      RaycastHit2D[] raycastHits = Physics2D.RaycastAll(transform.position, direction, 0.5f, collisionMask);
+      RaycastHit2D[] raycastHits = Physics2D.RaycastAll(transform.position, direction, stepLength, collisionMask);
       foreach (RaycastHit2D raycastHit in raycastHits)
       {
         //if the raycast hits nothing. (end and return false)
@@ -50,7 +51,7 @@ public class Character : MonoBehaviour
       {
         steps++;
         this.direction = direction;
-        transform.position += (Vector3)(Vector2)direction;
+        transform.position += (Vector3)(Vector2)direction * stepLength;
         nextMove = Time.time + 1f / movementSpeed;
         return true;
       }
