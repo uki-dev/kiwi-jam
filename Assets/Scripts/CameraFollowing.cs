@@ -3,6 +3,9 @@ using System.Collections;
 
 public class CameraFollowing : MonoBehaviour
 {
+
+    // please attach this script same with the player script
+
     // credits
     // https://unity3d.com/learn/tutorials/projects/2d-ufo-tutorial/following-player-camera
 
@@ -15,7 +18,12 @@ public class CameraFollowing : MonoBehaviour
     void Start()
     {
         // init the player object with the one in Player script, update this in character changing
-        player = GetComponent<Player>().character.gameObject;
+        if (GetComponent<Player>()){
+            player = GetComponent<Player>().character.gameObject;  
+        }else{
+            Debug.LogError("Please attach this script at the same object with player script");
+        }
+
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - player.transform.position;
     }
