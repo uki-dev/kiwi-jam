@@ -6,10 +6,6 @@ public class Enemy : Character
 {
   public Vector2Int[] path;
 
-  public int step = 0;
-  public int pathIndex = 0;
-  public bool reversing = false;
-
   void Start()
   {
     transform.position += (Vector3)(Vector2)path[0];
@@ -18,16 +14,17 @@ public class Enemy : Character
 
   void Update()
   {
-    if (Physics2D.Raycast(transform.position, direction, Mathf.Infinity, LayerMask.NameToLayer("Player")))
+    if (Physics2D.Raycast(transform.position, direction, Mathf.Infinity, 1 << LayerMask.NameToLayer("Character")))
     {
       Debug.Log("Game Over");
-      // game over ?
     }
   }
 
   IEnumerator Patrol()
   {
-
+    int step = 0;
+    int pathIndex = 0;
+    bool reversing = false;
     while (true)
     {
       Vector2Int start = path[pathIndex];
@@ -43,9 +40,10 @@ public class Enemy : Character
           yield return new WaitForSeconds(1f / movementSpeed);
         else
         {
-          Debug.Log("Blocked");
+          // Adjust current path index and switch directions and store the current step for the new path
+          pathIndex = (reversing) ? pathIndex - 1 : pathIndex + 1;
           reversing = !reversing;
-          step = steps - 1 - i;
+          step = steps - i;
           blocked = true;
           break;
         }
@@ -55,14 +53,13 @@ public class Enemy : Character
         continue;
 
       step = 0;
-
       pathIndex = (reversing) ? pathIndex - 1 : pathIndex + 1;
       if (reversing && pathIndex == 0)
         reversing = false;
       if (!reversing && pathIndex + 1 == path.Length)
         reversing = true;
 
-
+      yield return null;
     }
   }
 }

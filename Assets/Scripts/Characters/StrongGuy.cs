@@ -9,7 +9,7 @@ public class StrongGuy : Character
     bool canMove = base.CanMove(direction);
     if (!canMove && Time.time >= nextMove && steps < maximumSteps)
     {
-      RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, LayerMask.NameToLayer("Box"));
+      RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, 1 << LayerMask.NameToLayer("Box"));
       if (raycastHit)
       {
         Box box = raycastHit.collider.GetComponent<Box>();
