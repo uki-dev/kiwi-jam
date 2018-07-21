@@ -14,10 +14,18 @@ public class Button : MonoBehaviour
   [SerializeField]
   public UnityEvent released;
 
+  AudioSource audioSource;
+
+  void Start()
+  {
+    audioSource = GetComponent<AudioSource>();
+  }
+
   void OnTriggerEnter2D(Collider2D collider)
   {
     pressed.Invoke();
-    GetComponent<AudioSource>().Play();
+    if(audioSource)
+      audioSource.Play();
   }
 
   void OnTriggerExit2D(Collider2D collider)
