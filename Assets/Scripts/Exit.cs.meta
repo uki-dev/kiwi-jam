@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 4c3efd48b85c87143b8333b0f9736898
+guid: 60d91a700e649e243b31724f9c2d2466
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - lodgedTile: {fileID: 11400000, guid: c0cbb84b2e245ab4b841074c65bf441a, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
