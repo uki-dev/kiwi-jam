@@ -2772,7 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Strong Guy !
-  maximumSteps: 64
+  maximumSteps: 32
   movementSpeed: 4
   collisionMask:
     serializedVersion: 2
