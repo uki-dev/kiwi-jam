@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class Door : Interactable
 {
+  private bool isOpen = false;
 
-    private bool isOpen = false;
+  private void Open()
+  {
+    Debug.Log("the door is opening");
+  }
 
-    private void Open(){
-        Debug.Log("the door is opening");
-    }
+  private void Close()
+  {
+    Debug.Log("the door is closing");
+  }
 
-    private void Close(){
-        Debug.Log("the door is closing");
-    }
+  public override void Interact()
+  {
+    base.Interact();
 
-
-    public override void Interact()
+    if (isOpen)
     {
-        base.Interact();
-
-        if (isOpen)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-
+      Close();
     }
-
+    else
+    {
+      Open();
+    }
+  }
 }
