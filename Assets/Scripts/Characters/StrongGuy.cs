@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class StrongGuy : Character
 {
-  protected override bool CanMove(Vector2Int direction)
+  public override bool Move(Vector2Int direction)
   {
-    bool canMove = base.CanMove(direction);
-    if (!canMove && Time.time >= nextMove && steps < maximumSteps)
+    if (canMove)
     {
+      bool blocked = false;
       RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, 1 << LayerMask.NameToLayer("Box"));
       if (raycastHit)
       {
         Box box = raycastHit.collider.GetComponent<Box>();
-        if (box && box.Move(direction))
-          return true;
+        if (box && !box.Move(direction))
+          blocked = true;
       }
+      if (!blocked)
+        return base.Move(direction);
     }
-    return canMove;
+    return false;
   }
 }
