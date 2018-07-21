@@ -3101,11 +3101,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841702321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 586b563bfc5044509847b04753d7f624, type: 3}
+  m_Script: {fileID: 11500000, guid: ffc309afef2e14f4ebf866c1cbf32bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters: []
-  player: {fileID: 0}
+  level: {fileID: 0}
 --- !u!4 &1841702323
 Transform:
   m_ObjectHideFlags: 0
