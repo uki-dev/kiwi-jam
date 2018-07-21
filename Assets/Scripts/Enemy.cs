@@ -18,9 +18,11 @@ public class Enemy : Character
 
   void Update()
   {
-    if (Physics2D.Raycast(transform.position, direction, Mathf.Infinity, 1 << LayerMask.NameToLayer("Character")))
+    RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, Mathf.Infinity);
+    if (raycastHit)
     {
-      Debug.Log("Game Over");
+      if (raycastHit.collider.CompareTag("Player"))
+        Debug.Log("Game Over");
     }
   }
 

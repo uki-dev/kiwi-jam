@@ -11,7 +11,6 @@ public class Button : Interactable
 
   void OnTriggerEnter2D(Collider2D collider)
   {
-    Debug.Log("Trigger");
     interactable.Interact();
   }
 
