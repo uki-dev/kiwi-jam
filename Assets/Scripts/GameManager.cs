@@ -150,6 +150,8 @@ public class GameManager : MonoBehaviour
      */
     public void GoNextLevel(){
 
+        Debug.Log("solved, go to next level");
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
