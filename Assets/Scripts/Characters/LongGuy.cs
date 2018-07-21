@@ -13,7 +13,6 @@ public class LongGuy : Character
       {
         // There is a pit, now check if there is an empty space on the other side
         Vector3 position = transform.position + (Vector3)(Vector2)direction * 2;
-				Debug.Log(Physics2D.OverlapBox(position, Vector2.one * 0.5f, 0f));
         if (!Physics2D.OverlapBox(position, Vector2.one * 0.5f, 0f))
         {
           //There is empty space on the other side so let's move the character
