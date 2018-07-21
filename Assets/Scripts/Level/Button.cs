@@ -17,6 +17,7 @@ public class Button : MonoBehaviour
   void OnTriggerEnter2D(Collider2D collider)
   {
     pressed.Invoke();
+    GetComponent<AudioSource>().Play();
   }
 
   void OnTriggerExit2D(Collider2D collider)
