@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 204297118}
   - component: {fileID: 204297114}
   m_Layer: 10
-  m_Name: Box
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7382524103dea1543a95810d5abdc10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 831888453}
+  character: {fileID: 1249546857}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
