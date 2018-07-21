@@ -16,14 +16,14 @@ public class Button : Interactable
     }
     public Interactable interactable;
 
-  void OnTriggerEnter2D(Collider2D collider)
-  {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
         audio2.Play();
         interactable.Interact();
-  }
+    }
 
-  void OnTriggerExit2D(Collider2D collider)
-  {
+    void OnTriggerExit2D(Collider2D collider)
+    {
     interactable.Interact();
-  }
+    }
 }
