@@ -4,45 +4,51 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+  public new string name;
   public int maximumSteps;
   public float movementSpeed;
 
   [HideInInspector]
   public Vector2Int direction;
 
-  bool moving;
-  int steps;
-  float nextMove;
+  protected int steps;
+  protected float nextMove;
 
-  float delta;
+  //bool moving;
+  //float delta;
 
-  public void Move(Vector2Int direction)
+  protected virtual bool CanMove(Vector2Int direction)
   {
-    if (Time.time >= nextMove && steps < maximumSteps)
+    // stop diagonal movement
+    if(Mathf.Abs(direction.x) == Mathf.Abs(direction.y))
+      return false;
+
+    if (Time.time >= nextMove && (steps == 0 || steps < maximumSteps))
     {
-      bool canMove = true;
       RaycastHit2D[] raycastHits = Physics2D.RaycastAll(transform.position, direction, 0.5f);
       foreach (RaycastHit2D raycastHit in raycastHits)
       {
         if (raycastHit.collider.gameObject != gameObject)
-        {
-          canMove = false;
-          Box box = raycastHit.collider.GetComponent<Box>();
-          if (box && box.Move(direction))
-          {
-            canMove = true;
-          }
-        }
+          return false;
       }
-      if (canMove)
-      {
-        this.direction = direction;
-        transform.position += (Vector3)(Vector2)direction;
-        nextMove = Time.time + 1f / movementSpeed;
-      }
+      return true;
     }
+    return false;
   }
 
+  public virtual bool Move(Vector2Int direction)
+  {
+    if (CanMove(direction))
+    {
+      this.direction = direction;
+      transform.position += (Vector3)(Vector2)direction;
+      nextMove = Time.time + 1f / movementSpeed;
+      return true;
+    }
+    return false;
+  }
+
+  /*
   IEnumerator IMove(Vector2Int direction)
   {
     float time = delta;
@@ -60,4 +66,5 @@ public class Character : MonoBehaviour
     delta = time - 1f;
     moving = false;
   }
+  */
 }

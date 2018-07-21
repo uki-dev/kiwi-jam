@@ -20,10 +20,8 @@ public class Player : MonoBehaviour
         direction.y -= 1;
       if (Input.GetKey(KeyCode.D))
         direction.x += 1;
-
-      // stop diagonal movement
-      if (Mathf.Abs(direction.x) != Mathf.Abs(direction.y))
-        character.Move(direction);
+      
+      character.Move(direction);
     }
   }
 }
