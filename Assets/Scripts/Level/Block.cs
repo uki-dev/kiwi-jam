@@ -18,11 +18,9 @@ public class Block : MonoBehaviour
     RaycastHit2D pitRaycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, 1 << LayerMask.NameToLayer("Pit"));
     if (pitRaycastHit)
     {
-      // Change the pit tile to the lodged one
+      // Change the pit tile to the lodged one and destroy block game object
       Tilemap tilemap = pitRaycastHit.collider.GetComponent<Tilemap>();
-      // Flooring this doesn't work, guess we just - 0.5f?
       tilemap.SetTile(tilemap.layoutGrid.WorldToCell(pitRaycastHit.point - new Vector2(0.5f, 0.5f)), lodgedTile);
-      // Destroy the block
       GameObject.Destroy(gameObject);
       return true;
     }

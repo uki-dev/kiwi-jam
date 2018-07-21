@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interactable
+public class Door : MonoBehaviour
 {
   public bool open
   {
@@ -29,11 +29,5 @@ public class Door : Interactable
   void OnValidate()
   {
     open = open;
-  }
-
-  public override void Interact()
-  {
-    base.Interact();
-    open = !open;
   }
 }
