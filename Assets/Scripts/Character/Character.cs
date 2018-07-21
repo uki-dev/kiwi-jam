@@ -15,6 +15,9 @@ public class Character : MonoBehaviour
   public LayerMask collisionMask;
 
   [HideInInspector]
+  public bool used;
+
+  [HideInInspector]
   public Vector2Int direction;
 
   protected int steps;

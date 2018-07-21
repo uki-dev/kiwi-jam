@@ -302,9 +302,8 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
   m_Layer: 0
-  m_Name: Player Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,21 +393,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
---- !u!114 &519420034
+--- !u!1 &830504729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830504731}
+  - component: {fileID: 830504730}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &830504730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
+  m_GameObject: {fileID: 830504729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 586b563bfc5044509847b04753d7f624, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b6a6e5d6726852469ddd3897be7bb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 1249546856}
-  - {fileID: 831888452}
-  player: {fileID: 519420030}
+  - {fileID: 1249546857}
+  - {fileID: 831888453}
+--- !u!4 &830504731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830504729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &831888452
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +473,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 3841
+  used: 0
   direction: {x: 0, y: 0}
 --- !u!61 &831888454
 BoxCollider2D:
@@ -2556,6 +2584,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 3841
+  used: 0
   direction: {x: 0, y: 0}
 --- !u!61 &1249546858
 BoxCollider2D:
@@ -2687,10 +2716,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325386729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e1daf1636b0c264ba1d0270bcdbb442, type: 3}
+  m_Script: {fileID: 11500000, guid: a9120c8e2808a7049a2901a2dfe38d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 1936119125}
+  pressed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  released:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!61 &1325386731
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3028,6 +3066,47 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+--- !u!1 &1841702321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1841702323}
+  - component: {fileID: 1841702322}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1841702322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841702321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586b563bfc5044509847b04753d7f624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 0}
+--- !u!4 &1841702323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841702321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9174979, y: 0.9927923, z: 0.03203125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936119124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,6 +3260,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1793
+  used: 0
   direction: {x: 0, y: 0}
   path:
   - {x: 0, y: 0}

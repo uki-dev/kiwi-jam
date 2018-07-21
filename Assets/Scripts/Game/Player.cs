@@ -10,8 +10,14 @@ public class Player : MonoBehaviour
 {
   public Character character;
 
-  public void Update()
+  void Update()
   {
+    for(int i = 0; i < Game.instance.level.characters.Length; i++) {
+      if(Input.GetKeyDown(KeyCode.Alpha1 + i)) {
+        character = Game.instance.level.characters[i];
+      }
+    }
+
     if (character)
     {
       Vector2Int direction = Vector2Int.zero;
@@ -26,6 +32,10 @@ public class Player : MonoBehaviour
         direction.x += 1;
       
       character.Move(direction);
+
+      Vector3 position = character.transform.position;
+      position.z = transform.position.z;
+      transform.position = position;
     }
   }
 }

@@ -4,18 +4,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Button : Interactable
+public class Button : MonoBehaviour
 {
-  public Interactable interactable;
+  [SerializeField]
+  public UnityEvent pressed;
+
+  [SerializeField]
+  public UnityEvent released;
 
   void OnTriggerEnter2D(Collider2D collider)
   {
-    interactable.Interact();
+    pressed.Invoke();
   }
 
   void OnTriggerExit2D(Collider2D collider)
   {
-    interactable.Interact();
+    released.Invoke();
   }
 }
