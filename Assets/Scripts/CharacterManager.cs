@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class characterManager : MonoBehaviour
+public class CharacterManager : MonoBehaviour
 {
     public int level = 1;
     public bool one = false;
