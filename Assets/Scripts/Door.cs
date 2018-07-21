@@ -5,14 +5,19 @@ using UnityEngine;
 public class Door : Interactable
 {
   private bool isOpen = false;
+  public SpriteRenderer door;
+  public Sprite openDoor;
+  public Sprite doorClosed;
 
   private void Open()
   {
+    isOpen = true;
     Debug.Log("the door is opening");
   }
 
   private void Close()
   {
+    isOpen = false;
     Debug.Log("the door is closing");
   }
 
@@ -21,12 +26,8 @@ public class Door : Interactable
     base.Interact();
 
     if (isOpen)
-    {
       Close();
-    }
     else
-    {
       Open();
-    }
   }
 }
