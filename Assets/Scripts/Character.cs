@@ -18,7 +18,6 @@ public class Character : MonoBehaviour
 
   protected int steps;
   protected float nextMove;
-
   protected bool canMove
   {
     get
@@ -27,12 +26,9 @@ public class Character : MonoBehaviour
     }
   }
 
-  //bool moving;
-  //float delta;
-
   public virtual bool Move(Vector2Int direction)
   {
-    // stop diagonal movement
+    // Stop diagonal movement
     if (Mathf.Abs(direction.x) == Mathf.Abs(direction.y))
       return false;
 
@@ -49,8 +45,10 @@ public class Character : MonoBehaviour
           blocked = true;
       }
 
+      // Move character if it isn't blocked
       if (!blocked)
       {
+        steps++;
         this.direction = direction;
         transform.position += (Vector3)(Vector2)direction;
         nextMove = Time.time + 1f / movementSpeed;
@@ -59,24 +57,4 @@ public class Character : MonoBehaviour
     }
     return false;
   }
-
-  /*
-  IEnumerator IMove(Vector2Int direction)
-  {
-    float time = delta;
-    Vector2 startPosition = transform.position;
-    Vector2 endPosition = startPosition + direction;
-
-    moving = true;
-    while (time < 1f)
-    {
-      transform.position = Vector2.Lerp(startPosition, endPosition, time);
-      time += Time.deltaTime * movementSpeed;
-      yield return null;
-    }
-    transform.position = endPosition;
-    delta = time - 1f;
-    moving = false;
-  }
-  */
 }
