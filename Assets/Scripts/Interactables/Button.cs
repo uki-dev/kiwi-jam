@@ -7,11 +7,19 @@ using UnityEngine;
 
 public class Button : Interactable
 {
-  public Interactable interactable;
+    AudioSource audio2;
+    void Start()
+    {
+         audio2 = GetComponent<AudioSource>();
+
+
+    }
+    public Interactable interactable;
 
   void OnTriggerEnter2D(Collider2D collider)
   {
-    interactable.Interact();
+        audio2.Play();
+        interactable.Interact();
   }
 
   void OnTriggerExit2D(Collider2D collider)
