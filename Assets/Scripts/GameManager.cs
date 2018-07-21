@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,15 +75,18 @@ public class GameManager : MonoBehaviour
     //Update is called every frame.
     void Update()
     {
+        // detect the key pressed
         foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
         {
-            if (Input.GetKeyDown(kcode)){
+            if (Input.GetKeyDown(kcode))
+            {
 
                 Debug.Log("KeyCode down: " + kcode);
 
                 // use switch case to detect which number is pressed
-                switch (kcode) {
-                    case KeyCode.Alpha1 :
+                switch (kcode)
+                {
+                    case KeyCode.Alpha1:
 
                         changeCharacter(0);
 
@@ -118,7 +122,7 @@ public class GameManager : MonoBehaviour
                         changeCharacter(6);
                         break;
                     case KeyCode.Alpha8:
-                        
+
 
                         changeCharacter(7);
                         break;
@@ -137,9 +141,15 @@ public class GameManager : MonoBehaviour
                         break;
                 }
             }
-                
-
-           
         }
+    }
+
+    /*
+     * Run this when player solve the puzzle successfully
+     * 
+     */
+    public void GoNextLevel(){
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
