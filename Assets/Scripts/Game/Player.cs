@@ -12,11 +12,11 @@ public class Player : MonoBehaviour
 
   void Update()
   {
-    for (int i = 0; i < Game.instance.level.characters.Length; i++)
+    for (int i = 0; i < Level.current.characters.Length; i++)
     {
       if (Input.GetKeyDown(KeyCode.Alpha1 + i))
       {
-        character = Game.instance.level.characters[i];
+        character = Level.current.characters[i];
       }
     }
 

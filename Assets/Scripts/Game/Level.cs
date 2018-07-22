@@ -5,21 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
+  public static Level current;
+
   public Character[] characters;
-  public string nextLevel;
+  public string next;
 
   void Awake()
   {
-    Game.instance.level = this;
+    current = this;
   }
 
   public void Complete()
   {
-    if (nextLevel.Length > 0)
-      SceneManager.LoadSceneAsync(nextLevel);
-    else
-    {
-      // return to menu?
-    }
+    if (next.Length > 0)
+      SceneManager.LoadSceneAsync(next);
+  }
+
+  public void Fail()
+  {
+    Scene scene = SceneManager.GetActiveScene();
+    SceneManager.LoadScene(scene.name);
   }
 }
