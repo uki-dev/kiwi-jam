@@ -21,7 +21,7 @@ public class Level : MonoBehaviour
       SceneManager.LoadSceneAsync(next);
   }
 
-  public void Fail()
+  public void Restart()
   {
     Scene scene = SceneManager.GetActiveScene();
     SceneManager.LoadScene(scene.name);
