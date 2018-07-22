@@ -12,8 +12,10 @@ public class Player : MonoBehaviour
 
   void Update()
   {
-    for(int i = 0; i < Game.instance.level.characters.Length; i++) {
-      if(Input.GetKeyDown(KeyCode.Alpha1 + i)) {
+    for (int i = 0; i < Game.instance.level.characters.Length; i++)
+    {
+      if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+      {
         character = Game.instance.level.characters[i];
       }
     }
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour
         direction.y -= 1;
       if (Input.GetKey(KeyCode.D))
         direction.x += 1;
-      
+
       character.Move(direction);
 
       Vector3 position = character.transform.position;
