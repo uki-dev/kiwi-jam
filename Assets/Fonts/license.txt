@@ -1,0 +1,48 @@
+This file includes Japanese in UTF-8.
+
+
+
+The Font "IchigoJam" and "IchigoJam-GRAPH"
+
+IchigoJam (Officical Site: Japanese 日本語):
+http://ichigojam.net/
+
+IchigoJam BASIC reference (English):
+http://ichigojam.net/IchigoJam-en.html
+
+IchigoJamKit, PCfor your first programming (English): 
+http://ichigojam.net/IchigoJam-kit-en.pdf
+
+IchigoJam charmap:
+http://fukuno.jig.jp/app/IchigoJam/charmap.html
+
+
+
+IchigoJam is copyright © 2014-2016 jig.jp
+http://jig.jp/
+
+Originally IchigoJam was made
+by @taisukef (福野泰介 - Taisuke Fukuno) is the president of jig.jp:
+http://fukuno.jig.jp/
+
+
+
+Conversion of the TureType font
+by BALLOON a.k.a. Fu-sen. | Keiichi SHIGA (ふうせん Fu-sen. | 志賀 慶一):
+
+イチゴジャム レシピ (IchigoJam Recipe 日本語)
+http://15jamrecipe.jimdo.com/
+
+ふうせん Fu-sen. (BALLOON a.k.a. Fu-sen. Tumblr 日本語)
+http://balloon-aka-fu-sen.tumblr.com/
+
+志賀 慶一 (Keiichi SHIGA Tumblr 日本語)
+http://keiichi-blog.tumblr.com/
+
+
+
+licensed under a Creative Commons Attribution license:
+http://creativecommons.org/licenses/by/4.0/
+
+このフォントは クリエイティブ・コモンズ 表示 4.0 国際 ライセンス下で提供されています。
+http://creativecommons.org/licenses/by/4.0/deed.ja
