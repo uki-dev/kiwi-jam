@@ -6,17 +6,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Game : MonoBehaviour
 {
+  public new Camera camera;
   public Character character;
 
   void Update()
   {
-    for (int i = 0; i < Game.instance.level.characters.Length; i++)
+    for (int i = 0; i < Level.current.characters.Length; i++)
     {
       if (Input.GetKeyDown(KeyCode.Alpha1 + i))
       {
-        character = Game.instance.level.characters[i];
+        if (!Level.current.characters[i].used)
+        {
+          character = Level.current.characters[i];
+          character.used = true;
+        }
       }
     }
 
@@ -35,9 +40,14 @@ public class Player : MonoBehaviour
 
       character.Move(direction);
 
+      // Move camera
       Vector3 position = character.transform.position;
-      position.z = transform.position.z;
-      transform.position = position;
+      position.z = camera.transform.position.z;
+      camera.transform.position = position;
+    }
+
+    if(Input.GetKeyDown(KeyCode.Escape)) {
+      Level.current.Restart();
     }
   }
 }

@@ -62,7 +62,7 @@ public class BadGuy : Character
     gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, pathDirection, Mathf.Infinity, ~LayerMask.GetMask("Gone Guy", "Ignore Raycast"));
     if (raycastHit && raycastHit.collider.CompareTag("Player"))
-      Game.instance.GameOver();
+      Level.current.Restart();
 
     gameObject.layer = layer;
   }

@@ -8,11 +8,14 @@ using UnityEngine.Events;
 
 public class Button : MonoBehaviour
 {
-  [SerializeField]
-  public UnityEvent pressed;
+  public Sprite pressedSprite;
+  public Sprite releasedSprite;
 
   [SerializeField]
-  public UnityEvent released;
+  public UnityEvent pressedEvent;
+
+  [SerializeField]
+  public UnityEvent releasedEvent;
 
   AudioSource audioSource;
 
@@ -23,13 +26,15 @@ public class Button : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D collider)
   {
-    pressed.Invoke();
+    pressedEvent.Invoke();
+    GetComponent<SpriteRenderer>().sprite = pressedSprite;
     if(audioSource)
       audioSource.Play();
   }
 
   void OnTriggerExit2D(Collider2D collider)
   {
-    released.Invoke();
+    GetComponent<SpriteRenderer>().sprite = releasedSprite;
+    releasedEvent.Invoke();
   }
 }
