@@ -12,7 +12,7 @@ public class Block : MonoBehaviour
   public bool Move(Vector2Int direction)
   {
     // Check first if there's a pit in the movement direction that the block can be lodged into
-    RaycastHit2D pitRaycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, 1 << LayerMask.NameToLayer("Pit"));
+    RaycastHit2D pitRaycastHit = Physics2D.Raycast(transform.position, direction, 0.5f, LayerMask.GetMask("Pit"));
     if (pitRaycastHit)
     {
       // Change the pit tile to the lodged one and destroy block game object

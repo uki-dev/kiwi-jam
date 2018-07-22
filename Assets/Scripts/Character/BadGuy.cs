@@ -10,6 +10,7 @@ public class BadGuy : Character
 {
   public Vector2Int[] path;
 
+  Vector2Int pathDirection;
   int step, stepCount, pathIndex;
   bool started, reversing;
 
@@ -25,14 +26,14 @@ public class BadGuy : Character
       Vector2Int start = path[pathIndex];
       Vector2Int end = path[(reversing) ? pathIndex - 1 : pathIndex + 1];
       Vector2Int offset = end - start;
-      direction = new Vector2Int(Mathf.Clamp(offset.x, -1, 1), Mathf.Clamp(offset.y, -1, 1));
+      pathDirection = new Vector2Int(Mathf.Clamp(offset.x, -1, 1), Mathf.Clamp(offset.y, -1, 1));
       stepCount = (int)offset.magnitude;
       started = true;
     }
 
     if (canMove)
     {
-      if (Move(direction))
+      if (Move(pathDirection))
       {
         step++;
         if (step == stepCount)
@@ -59,7 +60,7 @@ public class BadGuy : Character
 
     int layer = gameObject.layer;
     gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-    RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction);
+    RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, pathDirection, Mathf.Infinity, ~LayerMask.GetMask("Gone Guy", "Ignore Raycast"));
     if (raycastHit && raycastHit.collider.CompareTag("Player"))
       Game.instance.GameOver();
 

@@ -9,7 +9,7 @@ public class LongGuy : Character
     if (canMove)
     {
       // Check if there is a pit in the direction of movement, otherwise move normally
-      if (Physics2D.Raycast(transform.position, direction, 0.5f, 1 << LayerMask.NameToLayer("Pit")))
+      if (Physics2D.Raycast(transform.position, direction, 0.5f, LayerMask.GetMask("Pit")))
       {
         // There is a pit, now check if there is an empty space on the other side
         Vector3 position = transform.position + (Vector3)(Vector2)direction * 2;
