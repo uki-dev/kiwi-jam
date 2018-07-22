@@ -9,9 +9,6 @@ using UnityEngine.Tilemaps;
 
 public class Block : MonoBehaviour
 {
-  [HideInInspector]
-  public Tile lodgedTile;
-
   public bool Move(Vector2Int direction)
   {
     // Check first if there's a pit in the movement direction that the block can be lodged into
@@ -20,8 +17,10 @@ public class Block : MonoBehaviour
     {
       // Change the pit tile to the lodged one and destroy block game object
       Tilemap tilemap = pitRaycastHit.collider.GetComponent<Tilemap>();
-      tilemap.SetTile(tilemap.layoutGrid.WorldToCell(pitRaycastHit.point - new Vector2(0.5f, 0.5f)), lodgedTile);
-      GameObject.Destroy(gameObject);
+      tilemap.SetTile(tilemap.layoutGrid.WorldToCell(pitRaycastHit.point - new Vector2(0.5f, 0.5f)), null);
+      transform.position += (Vector3)(Vector2)direction;
+      gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+      Destroy(this);
       return true;
     }
 
