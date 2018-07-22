@@ -6,6 +6,6 @@ public class Exit : MonoBehaviour
 {
   void OnTriggerEnter2D(Collider2D collider)
   {
-		// Level Complete
+    Game.instance.level.Complete();
   }
 }
